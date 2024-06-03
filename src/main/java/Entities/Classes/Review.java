@@ -1,4 +1,4 @@
-package Entities;
+package Entities.Classes;
 
 import java.time.LocalDateTime;
 
@@ -18,8 +18,21 @@ public class Review {
         setComment(comment);
     }
 
+    public Review(int id, int guestID, int hotelID, LocalDateTime date, int rating, String comment) {
+        setId(id);
+        setGuestID(guestID);
+        setHotelID(hotelID);
+        setDate(date);
+        setRating(rating);
+        setComment(comment);
+    }
+
     public int getId() {
         return id;
+    }
+
+    protected void setId(int id) {
+        this.id = id;
     }
 
     public int getGuestID() {

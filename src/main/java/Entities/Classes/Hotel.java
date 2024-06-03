@@ -1,4 +1,4 @@
-package Entities;
+package Entities.Classes;
 
 public class Hotel {
     private int id = -1;
@@ -20,8 +20,23 @@ public class Hotel {
         setDescription(description);
     }
 
+    public Hotel(int id, String name, int stars, double rating, String country, String city, String address, String description) {
+        setId(id);
+        setName(name);
+        setStars(stars);
+        setRating(rating);
+        setCountry(country);
+        setCity(city);
+        setAddress(address);
+        setDescription(description);
+    }
+
     public int getId() {
         return id;
+    }
+
+    protected void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

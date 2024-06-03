@@ -1,4 +1,4 @@
-package Entities;
+package Entities.Classes;
 
 import java.time.LocalDateTime;
 
@@ -29,8 +29,21 @@ public class Order {
         setComment(comment);
     }
 
+    public Order(int id, int guestID, double price, LocalDateTime date, Status status, String comment) {
+        setId(id);
+        setGuestID(guestID);
+        setPrice(price);
+        setDate(date);
+        setStatus(status);
+        setComment(comment);
+    }
+
     public int getId() {
         return id;
+    }
+
+    protected void setId(int id) {
+        this.id = id;
     }
 
     public int getGuestID() {

@@ -1,4 +1,4 @@
-package Entities;
+package Entities.Classes;
 
 import java.time.LocalDateTime;
 
@@ -30,8 +30,21 @@ public class Reservation {
         setStatus(status);
     }
 
+    public Reservation(int id, int orderID, int roomID, LocalDateTime startDate, LocalDateTime endDate, Status status) {
+        setId(id);
+        setOrderID(orderID);
+        setRoomID(roomID);
+        setStartDate(startDate);
+        setEndDate(endDate);
+        setStatus(status);
+    }
+
     public int getId() {
         return id;
+    }
+
+    protected void setId(int id) {
+        this.id = id;
     }
 
     public int getOrderID() {

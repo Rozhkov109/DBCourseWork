@@ -1,4 +1,4 @@
-package Entities;
+package Entities.Classes;
 
 public class Room {
 
@@ -59,8 +59,25 @@ public class Room {
         setDescription(description);
     }
 
+    public Room(int id, int hotelID, double pricePerNight, String number, Type type, Status status, int oneSizeBed, int twoSizeBed, String description) {
+        setId(id);
+        setHotelID(hotelID);
+        setPricePerNight(pricePerNight);
+        setNumber(number);
+        setType(type);
+        setStatus(status);
+        setOneSizeBed(oneSizeBed);
+        setTwoSizeBed(twoSizeBed);
+        setCapacity();
+        setDescription(description);
+    }
+
     public int getId() {
         return id;
+    }
+
+    protected void setId(int id) {
+        this.id = id;
     }
 
     public int getHotelID() {
