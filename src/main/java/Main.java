@@ -1,5 +1,6 @@
 import Entities.Classes.Guest;
 import Entities.DAO_Implementation.GuestDAOImpl;
+import Entities.DAO_Implementation.OrderAndReservationDAOImpl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,12 +13,11 @@ import java.sql.Date;
 public class Main extends Application {
 
     public static void main(String[] args) {
-        GuestDAOImpl guest = new GuestDAOImpl();
+     OrderAndReservationDAOImpl orderAndReservationDAO = new OrderAndReservationDAOImpl();
 
-        System.out.println(guest.getGuestById(10));
-        System.out.println(guest.getGuestByEmail("viktoriia.pavliuchenko945@gmail.com"));
-        System.out.println(guest.getAllGuests());
-//        launch(args);
+     orderAndReservationDAO.deleteOrderWithReservation(20);
+
+    // launch(args);
     }
 
     @Override
