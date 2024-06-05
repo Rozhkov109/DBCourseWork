@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="298.0" prefWidth="462.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.AuthorizationController">
+    <children>
+        <Text layoutX="165.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Реєстрація">
+            <font>
+                <Font size="27.0" />
+            </font>
+        </Text>
+        <TextField fx:id="nameField" layoutX="28.0" layoutY="51.0" />
+        <TextField fx:id="emailField" layoutX="277.0" layoutY="51.0" />
+        <TextField fx:id="surnameField" layoutX="28.0" layoutY="99.0" />
+        <TextField fx:id="phoneField" layoutX="28.0" layoutY="149.0" />
+        <TextField fx:id="passportField" layoutX="277.0" layoutY="99.0" />
+        <DatePicker fx:id="birthDateField" layoutX="277.0" layoutY="149.0" prefHeight="26.0" prefWidth="150.0" />
+        <TextField fx:id="passwordField" layoutX="156.0" layoutY="200.0" />
+      <Button layoutX="173.0" layoutY="244.0" mnemonicParsing="false" onAction="#registerGuest" prefHeight="26.0" prefWidth="115.0" text="Зареєструватися" />
+      <Text layoutX="92.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ім'я" />
+      <Text layoutX="76.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Прізвище" />
+      <Text layoutX="56.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Номер телефону" />
+      <Text layoutX="301.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Електронна пошта" />
+      <Text layoutX="307.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Номер паспорту" />
+      <Text layoutX="303.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Дата народження" />
+      <Text layoutX="210.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Пароль" />
+      <Button layoutX="370.0" mnemonicParsing="false" onAction="#goToLoginPage" prefHeight="36.0" prefWidth="91.0" text="Логін" />
+    </children>
+</AnchorPane>

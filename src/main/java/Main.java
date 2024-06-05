@@ -1,14 +1,9 @@
-import Entities.Classes.Guest;
-import Entities.DAO_Implementation.GuestDAOImpl;
-import Entities.DAO_Implementation.OrderAndReservationDAOImpl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.time.LocalDate;
-import java.sql.Date;
 
 public class Main extends Application {
 
@@ -16,7 +11,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("JavaFX/MainWindow.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("JavaFX/Login.fxml"));
         Scene scene = new Scene(root);
 
         stage.setTitle("Система бронювання готелів");

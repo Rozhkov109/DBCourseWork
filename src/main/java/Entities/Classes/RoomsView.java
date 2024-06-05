@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 
 public class RoomsView {
     private int hotelId;
+
+    private int roomId;
     private String name;
     private String country;
     private String city;
@@ -13,7 +15,8 @@ public class RoomsView {
     private int capacity;
     private String endDate;
 
-    public RoomsView(int hotelId, String name, String country, String city, double pricePerNight, Room.RoomType roomType, Room.RoomStatus roomStatus, int capacity, String endDate) {
+    public RoomsView(int hotelId, int roomId, String name, String country, String city, double pricePerNight, Room.RoomType roomType, Room.RoomStatus roomStatus, int capacity, String endDate) {
+        setRoomId(roomId);
         setHotelId(hotelId);
         setName(name);
         setCountry(country);
@@ -95,5 +98,13 @@ public class RoomsView {
 
     public void setEndDate(String endDate) {
         this.endDate = endDate;
+    }
+
+    public int getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
     }
 }

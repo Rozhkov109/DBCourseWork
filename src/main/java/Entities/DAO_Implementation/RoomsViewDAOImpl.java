@@ -36,6 +36,7 @@ public class RoomsViewDAOImpl implements RoomsViewDAO {
             while (setOfRoomsView.next()) {
 
                int hotelId = setOfRoomsView.getInt("Hotel_id");
+               int roomId = setOfRoomsView.getInt("Room_id");
                String name = setOfRoomsView.getString("Name");
                String country = setOfRoomsView.getString("Country");
                String city = setOfRoomsView.getString("City");
@@ -47,7 +48,7 @@ public class RoomsViewDAOImpl implements RoomsViewDAO {
                if (endDate == null) { endDate = "Вільна"; }
 
 
-                roomsViewList.add(new RoomsView(hotelId,name,country,city,price,type,status,capacity,endDate));
+                roomsViewList.add(new RoomsView(hotelId,roomId,name,country,city,price,type,status,capacity,endDate));
             }
             return roomsViewList;
         }

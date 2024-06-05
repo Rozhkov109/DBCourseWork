@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="308.0" prefWidth="443.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.AuthorizationController">
+   <children>
+      <Text layoutX="180.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Логін">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Text>
+      <Button mnemonicParsing="false" onAction="#goToRegistrationPage" prefHeight="50.0" prefWidth="103.0" text="Реєстрація">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <TextField fx:id="emailLoginField" layoutX="147.0" layoutY="106.0" />
+      <TextField fx:id="passwordLoginField" layoutX="147.0" layoutY="171.0" />
+      <Button fx:id="loginButton" layoutX="170.0" layoutY="233.0" mnemonicParsing="false" onAction="#loginGuest" prefHeight="39.0" prefWidth="103.0" text="Увійти" />
+      <Text layoutX="171.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Електронна пошта" />
+      <Text layoutX="201.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Пароль" />
+   </children>
+</AnchorPane>
