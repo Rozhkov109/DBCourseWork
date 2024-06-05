@@ -12,24 +12,16 @@ import java.sql.Date;
 
 public class Main extends Application {
 
-    public static void main(String[] args) {
-
-    // launch(args);
-    }
+    public static void main(String[] args) { launch(args); }
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("test.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("JavaFX/MainWindow.fxml"));
         Scene scene = new Scene(root);
 
         stage.setTitle("Система бронювання готелів");
 
-        stage.setOnCloseRequest(event -> onCloseAction());
-
         stage.setScene(scene);
         stage.show();
-    }
-
-    private void onCloseAction() {
     }
 }
