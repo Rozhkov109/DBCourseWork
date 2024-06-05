@@ -5,5 +5,5 @@ import Entities.Classes.Room;
 import java.util.List;
 
 public interface RoomDAO {
-    List<Room> getAllRooms();
+    List<Room> getAllRoomsById(int hotelId);
 }

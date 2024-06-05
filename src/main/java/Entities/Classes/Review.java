@@ -10,10 +10,9 @@ public class Review {
     private int rating;
     private String comment;
 
-    public Review(int guestID, int hotelID, LocalDateTime date, int rating, String comment) {
+    public Review(int guestID, int hotelID, int rating, String comment) {
         setGuestID(guestID);
         setHotelID(hotelID);
-        setDate(date);
         setRating(rating);
         setComment(comment);
     }

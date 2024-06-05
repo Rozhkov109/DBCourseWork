@@ -5,16 +5,16 @@ import java.time.LocalDate;
 public class Guest {
     private int id = -1;
     private String firstName;
-    private String lastName;
+    private String secondName;
     private LocalDate birthDate;
     private String phoneNumber;
     private String email;
     private String passportNumber;
     private String password;
 
-    public Guest(String firstName, String lastName, LocalDate birthDate, String phoneNumber, String email, String passportNumber, String password) {
+    public Guest(String firstName, String secondName, LocalDate birthDate, String phoneNumber, String email, String passportNumber, String password) {
         setFirstName(firstName);
-        setLastName(lastName);
+        setSecondName(secondName);
         setBirthDate(birthDate);
         setPhoneNumber(phoneNumber);
         setEmail(email);
@@ -22,10 +22,10 @@ public class Guest {
         setPassword(password);
     }
 
-    public Guest(int id, String firstName, String lastName, LocalDate birthDate, String phoneNumber, String email, String passportNumber, String password) {
+    public Guest(int id, String firstName, String secondName, LocalDate birthDate, String phoneNumber, String email, String passportNumber, String password) {
         setId(id);
         setFirstName(firstName);
-        setLastName(lastName);
+        setSecondName(secondName);
         setBirthDate(birthDate);
         setPhoneNumber(phoneNumber);
         setEmail(email);
@@ -49,12 +49,12 @@ public class Guest {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getSecondName() {
+        return secondName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
     }
 
     public LocalDate getBirthDate() {
@@ -102,7 +102,7 @@ public class Guest {
         return "\nGuest{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                ", lastName='" + secondName + '\'' +
                 ", birthDate=" + birthDate +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +

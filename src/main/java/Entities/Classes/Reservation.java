@@ -3,13 +3,22 @@ package Entities.Classes;
 import java.time.LocalDateTime;
 
 public class Reservation {
-    public enum Status {
-        ACTIVE("Активне"),
-        CANCELED("Завершене");
+    public enum ReservationStatus {
+        ACTIVE("Active"),
+        CANCELED("Completed");
 
         private String status;
 
-        Status(String status) {
+        public static ReservationStatus fromString(String status) {
+            for (ReservationStatus s : ReservationStatus.values()) {
+                if (s.status.equalsIgnoreCase(status)) {
+                    return s;
+                }
+            }
+            return null;
+        }
+
+        ReservationStatus(String status) {
             this.status = status;
         }
 
@@ -20,23 +29,23 @@ public class Reservation {
     private int roomID;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
-    private Status status;
+    private ReservationStatus reservationStatus;
 
-    public Reservation(int orderID, int roomID, LocalDateTime startDate, LocalDateTime endDate, Status status) {
+    public Reservation(int orderID, int roomID, LocalDateTime startDate, LocalDateTime endDate, ReservationStatus reservationStatus) {
         setOrderID(orderID);
         setRoomID(roomID);
         setStartDate(startDate);
         setEndDate(endDate);
-        setStatus(status);
+        setStatus(reservationStatus);
     }
 
-    public Reservation(int id, int orderID, int roomID, LocalDateTime startDate, LocalDateTime endDate, Status status) {
+    public Reservation(int id, int orderID, int roomID, LocalDateTime startDate, LocalDateTime endDate, ReservationStatus reservationStatus) {
         setId(id);
         setOrderID(orderID);
         setRoomID(roomID);
         setStartDate(startDate);
         setEndDate(endDate);
-        setStatus(status);
+        setStatus(reservationStatus);
     }
 
     public int getId() {
@@ -79,11 +88,11 @@ public class Reservation {
         this.endDate = endDate;
     }
 
-    public Status getStatus() {
-        return status;
+    public ReservationStatus getStatus() {
+        return reservationStatus;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
+    public void setStatus(ReservationStatus reservationStatus) {
+        this.reservationStatus = reservationStatus;
     }
 }

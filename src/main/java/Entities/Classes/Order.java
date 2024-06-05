@@ -3,13 +3,22 @@ package Entities.Classes;
 import java.time.LocalDateTime;
 
 public class Order {
-    public enum Status {
-        CONFIRMED("Підтверджено"),
-        CANCELED("Скасовано");
+    public enum OrderStatus {
+        CONFIRMED("Confirmed"),
+        CANCELED("Cancelled");
 
         private String status;
 
-        Status(String status) {
+        public static OrderStatus fromString(String status) {
+            for (OrderStatus s : OrderStatus.values()) {
+                if (s.status.equalsIgnoreCase(status)) {
+                    return s;
+                }
+            }
+            return null;
+        }
+
+        OrderStatus(String status) {
             this.status = status;
         }
     }
@@ -18,23 +27,23 @@ public class Order {
     private int guestID;
     private double price;
     private LocalDateTime date;
-    private Status status;
+    private OrderStatus orderStatus;
     private String comment;
 
-    public Order(int guestID, double price, LocalDateTime date, Status status, String comment) {
+    public Order(int guestID, double price, LocalDateTime date, OrderStatus orderStatus, String comment) {
         setGuestID(guestID);
         setPrice(price);
         setDate(date);
-        setStatus(status);
+        setOrderStatus(orderStatus);
         setComment(comment);
     }
 
-    public Order(int id, int guestID, double price, LocalDateTime date, Status status, String comment) {
+    public Order(int id, int guestID, double price, LocalDateTime date, OrderStatus orderStatus, String comment) {
         setId(id);
         setGuestID(guestID);
         setPrice(price);
         setDate(date);
-        setStatus(status);
+        setOrderStatus(orderStatus);
         setComment(comment);
     }
 
@@ -70,12 +79,12 @@ public class Order {
         this.date = date;
     }
 
-    public Status getStatus() {
-        return status;
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
     public String getComment() {

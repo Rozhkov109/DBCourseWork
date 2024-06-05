@@ -2,14 +2,23 @@ package Entities.Classes;
 
 public class Room {
 
-    public enum Type {
-        STANDART("Стандартний"),
-        LUXURY("Люкс");
+    public enum RoomType {
+        STANDART("Standard"),
+        LUXURY("Luxury");
 
         private String type;
 
-        Type(String type) {
+        RoomType(String type) {
             this.type = type;
+        }
+
+        public static RoomType fromString(String type) {
+            for (RoomType t : RoomType.values()) {
+                if (t.type.equalsIgnoreCase(type)) {
+                    return t;
+                }
+            }
+            return null;
         }
 
         @Override
@@ -18,15 +27,24 @@ public class Room {
         }
     }
 
-    public enum Status {
-        AVAILABLE("Доступний"),
-        OCCUPIED("Зайнятий"),
-        MAINTENANCE("Обслуговування");
+    public enum RoomStatus {
+        AVAILABLE("Available"),
+        OCCUPIED("Occupied"),
+        MAINTENANCE("Maintenance");
 
         private String status;
 
-        Status(String status) {
+        RoomStatus(String status) {
             this.status = status;
+        }
+
+        public static RoomStatus fromString(String status) {
+            for (RoomStatus s : RoomStatus.values()) {
+                if (s.status.equalsIgnoreCase(status)) {
+                    return s;
+                }
+            }
+            return null;
         }
 
         @Override
@@ -39,36 +57,36 @@ public class Room {
     private int hotelID;
     private double pricePerNight;
     private String number;
-    private Type type;
-    private Status status;
+    private RoomType roomType;
+    private RoomStatus roomStatus;
     private int oneSizeBed;
     private int twoSizeBed;
     private int capacity;
     private String description;
 
 
-    public Room(int hotelID, double pricePerNight, String number, Type type, Status status, int oneSizeBed, int twoSizeBed, String description) {
+    public Room(int hotelID, double pricePerNight, String number, RoomType roomType, RoomStatus roomStatus, int oneSizeBed, int twoSizeBed, String description) {
         setHotelID(hotelID);
         setPricePerNight(pricePerNight);
         setNumber(number);
-        setType(type);
-        setStatus(status);
+        setType(roomType);
+        setStatus(roomStatus);
         setOneSizeBed(oneSizeBed);
         setTwoSizeBed(twoSizeBed);
         setCapacity();
         setDescription(description);
     }
 
-    public Room(int id, int hotelID, double pricePerNight, String number, Type type, Status status, int oneSizeBed, int twoSizeBed, String description) {
+    public Room(int id, int hotelID, double pricePerNight, String number, RoomType roomType, RoomStatus roomStatus, int oneSizeBed, int twoSizeBed, int capacity, String description) {
         setId(id);
         setHotelID(hotelID);
         setPricePerNight(pricePerNight);
         setNumber(number);
-        setType(type);
-        setStatus(status);
+        setType(roomType);
+        setStatus(roomStatus);
         setOneSizeBed(oneSizeBed);
         setTwoSizeBed(twoSizeBed);
-        setCapacity();
+        setCapacity(capacity);
         setDescription(description);
     }
 
@@ -104,20 +122,20 @@ public class Room {
         this.number = number;
     }
 
-    public Type getType() {
-        return type;
+    public RoomType getType() {
+        return roomType;
     }
 
-    public void setType(Type type) {
-        this.type = type;
+    public void setType(RoomType roomType) {
+        this.roomType = roomType;
     }
 
-    public Status getStatus() {
-        return status;
+    public RoomStatus getStatus() {
+        return roomStatus;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
+    public void setStatus(RoomStatus roomStatus) {
+        this.roomStatus = roomStatus;
     }
 
     public int getOneSizeBed() {
@@ -142,6 +160,10 @@ public class Room {
 
     public void setCapacity() {
         this.capacity = oneSizeBed + twoSizeBed;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 
     public String getDescription() {

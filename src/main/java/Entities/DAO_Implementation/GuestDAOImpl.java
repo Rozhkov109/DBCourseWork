@@ -31,7 +31,7 @@ public class GuestDAOImpl implements GuestDAO {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(ADD_GUEST);
             preparedStatement.setString(1, guest.getFirstName());
-            preparedStatement.setString(2, guest.getLastName());
+            preparedStatement.setString(2, guest.getSecondName());
             preparedStatement.setDate(3, Date.valueOf(guest.getBirthDate()));
             preparedStatement.setString(4, guest.getPhoneNumber());
             preparedStatement.setString(5, guest.getEmail());
