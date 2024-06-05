@@ -13,9 +13,6 @@ import java.sql.Date;
 public class Main extends Application {
 
     public static void main(String[] args) {
-     OrderAndReservationDAOImpl orderAndReservationDAO = new OrderAndReservationDAOImpl();
-
-     orderAndReservationDAO.deleteOrderWithReservation(20);
 
     // launch(args);
     }
