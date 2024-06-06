@@ -21,8 +21,7 @@ public class Room {
             return null;
         }
 
-        @Override
-        public String toString() {
+        public String getType() {
             return type;
         }
     }

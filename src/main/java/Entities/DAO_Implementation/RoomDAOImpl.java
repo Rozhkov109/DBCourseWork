@@ -13,6 +13,7 @@ public class RoomDAOImpl implements RoomDAO {
 
     private static final String SELECT_ALL_ROOMS_BY_HOTEL_ID = "SELECT * FROM hotelreservations.room WHERE Hotel_id = ?";
     private static final String SELECT_ALL_ROOMS = "SELECT * FROM hotelreservations.room";
+    private static final String UPDATE_ROOM_STATUS = "{call room_update_status(?, ?)}";
 
     public RoomDAOImpl() {
         try {
@@ -79,5 +80,20 @@ public class RoomDAOImpl implements RoomDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public void updateRoomStatus(int roomId, Room.RoomStatus status) {
+        try {
+            PreparedStatement preparedRoomStatement = connection.prepareStatement(UPDATE_ROOM_STATUS);
+
+            preparedRoomStatement.setInt(1, roomId);
+            preparedRoomStatement.setString(2, status.getStatus());
+
+            preparedRoomStatement.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

@@ -20,8 +20,8 @@
                 <Font size="14.0" />
             </font>
         </Button>
-      <TextArea fx:id="reservationInfoTextArea" layoutX="38.0" layoutY="74.0" prefHeight="80.0" prefWidth="224.0" />
-      <Text layoutX="109.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ви обрали">
+      <TextArea fx:id="reservationInfoTextArea" layoutX="14.0" layoutY="60.0" prefHeight="80.0" prefWidth="224.0" />
+      <Text layoutX="85.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ви обрали">
          <font>
             <Font size="17.0" />
          </font>
@@ -51,6 +51,11 @@
          </font>
       </Text>
       <Button layoutX="312.0" layoutY="123.0" mnemonicParsing="false" onAction="#countOrderPrice" prefHeight="23.0" prefWidth="74.0" text="Підрахувати">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <Button layoutX="98.0" layoutY="140.0" mnemonicParsing="false" onAction="#showOrderInfo" text="Показати">
          <font>
             <Font size="10.0" />
          </font>

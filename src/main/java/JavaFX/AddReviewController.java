@@ -1,6 +1,5 @@
 package JavaFX;
 
-
 import Entities.Classes.Review;
 import Entities.DAO_Implementation.HotelDAOImpl;
 import Entities.DAO_Implementation.ReviewDAOImpl;

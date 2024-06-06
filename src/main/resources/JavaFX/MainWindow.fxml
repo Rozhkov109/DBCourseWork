@@ -19,7 +19,7 @@
             <Font size="16.0" />
          </font>
       </Button>
-      <TableView fx:id="roomsViewTable" layoutX="22.0" layoutY="108.0" prefHeight="352.0" prefWidth="822.0">
+      <TableView fx:id="roomsViewTable" layoutX="22.0" layoutY="108.0" onMouseClicked="#handleButtonClick" prefHeight="352.0" prefWidth="822.0">
         <columns>
           <TableColumn fx:id="hotelColumn" prefWidth="97.60000801086426" text="Готель" />
           <TableColumn fx:id="countryColumn" prefWidth="113.59996795654297" text="Країна" />

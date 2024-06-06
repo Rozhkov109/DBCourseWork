@@ -12,11 +12,15 @@ public class RoomService {
         this.roomDAO = roomDAO;
     }
 
-    List<Room> getAllRoomsById(int hotelId) {
+    public List<Room> getAllRoomsById(int hotelId) {
         return roomDAO.getAllRoomsById(hotelId);
     }
 
-    List<Room> getAllRooms() {
+    public List<Room> getAllRooms() {
         return roomDAO.getAllRooms();
+    }
+
+    public void updateRoomStatus(int roomId, Room.RoomStatus status) {
+        roomDAO.updateRoomStatus(roomId,status);
     }
 }

@@ -1,5 +1,6 @@
 package JavaFX;
 
+import Entities.Classes.Room;
 import Entities.Classes.RoomsView;
 import Entities.DAO_Implementation.OrderAndReservationDAOImpl;
 import Entities.DAO_Implementation.RoomsViewDAOImpl;
@@ -17,14 +18,18 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class MainWindowController {
 
     ObservableList<RoomsView> roomsList;
+
+    RoomsView roomsView;
 
     @FXML
     private Button profileButton;
@@ -99,19 +104,40 @@ public class MainWindowController {
     }
 
     public void createReservation(ActionEvent actionEvent) throws IOException {
-       RoomsView roomsView = roomsViewTable.getSelectionModel().getSelectedItem();
+
        if (roomsView != null) {
-           FXMLLoader loader = new FXMLLoader(getClass().getResource("AddReservation.fxml"));
-           Parent root = loader.load();
+           LocalDateTime localDateTime;
+           DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-           AddReservationController addReservationController = loader.getController();
-           addReservationController.setMainWindowController(this);
-           addReservationController.setView(roomsView);
+           if (roomsView.getEndDate() == null) {
+               localDateTime = LocalDateTime.MIN;
+           } else {
+               localDateTime = LocalDateTime.parse(roomsView.getEndDate(), formatter);
+           }
 
-           Stage stage = new Stage();
-           stage.setTitle("Додати бронювання");
-           stage.setScene(new Scene(root));
-           stage.show();
+           if (localDateTime.isBefore(LocalDateTime.now()) && roomsView.getRoomStatus().getStatus().equals(Room.RoomStatus.AVAILABLE.getStatus())) {
+
+               FXMLLoader loader = new FXMLLoader(getClass().getResource("AddReservation.fxml"));
+               Parent root = loader.load();
+
+               AddReservationController addReservationController = loader.getController();
+               addReservationController.setMainWindowController(this);
+               addReservationController.setRoomsView(roomsView);
+
+               Stage stage = new Stage();
+               stage.setTitle("Додати бронювання");
+               stage.setScene(new Scene(root));
+               stage.show();
+           }
        }
     }
+
+    @FXML
+    private void handleButtonClick(MouseEvent event) {
+        RoomsView roomsView = roomsViewTable.getSelectionModel().getSelectedItem();
+        if (roomsView != null) {
+            this.roomsView = roomsView;
+        }
+    }
+
 }
