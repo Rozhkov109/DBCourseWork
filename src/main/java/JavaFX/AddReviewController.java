@@ -11,7 +11,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class AddDataController {
+public class AddReviewController {
+    public ProfileController profileController;
 
     @FXML
     private TextField hotelNameField;
@@ -22,9 +23,7 @@ public class AddDataController {
     @FXML
     private TextArea reviewTextArea;
 
-    public ProfileController profileController;
-
-    public void setMainWindowController(ProfileController profileController) {
+    public void setProfileWindowController(ProfileController profileController) {
         this.profileController = profileController;
     }
 
@@ -40,7 +39,7 @@ public class AddDataController {
                 hotelService.getHotelIdByName(hotelName),
                 rating,
                 reviewText));
-        reviewTextArea.setText("Відгук доданий!!!");
+        reviewTextArea.setText("Відгук доданий!");
         profileController.setReviews();
     }
 }

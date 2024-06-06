@@ -4,7 +4,6 @@ import Entities.Classes.Guest;
 import Entities.DAO_Implementation.GuestDAOImpl;
 import Entities.Services.GuestService;
 import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
 import com.thoughtworks.xstream.security.AnyTypePermission;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,7 +11,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -74,7 +72,7 @@ public class AuthorizationController {
     }
 
     @FXML
-    void goToMainPage(Guest guest,ActionEvent event) throws IOException {
+    void goToMainPage(ActionEvent event) throws IOException {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 
         Parent root = FXMLLoader.load(getClass().getResource("MainWindow.fxml"));
@@ -126,7 +124,7 @@ public class AuthorizationController {
             Guest guest = guestService.login(email,password);
             if (guest != null) {
                 writeGuestToXML(guest);
-                goToMainPage(guest,event);
+                goToMainPage(event);
             }
             else { passwordLoginField.setText("Помилка! Невірні дані"); }
         }

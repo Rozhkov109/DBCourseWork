@@ -1,14 +1,8 @@
 package JavaFX;
 
 import Entities.Classes.Guest;
-import Entities.Classes.Hotel;
-import Entities.Classes.Review;
 import Entities.Classes.ReviewView;
-import Entities.DAO_Implementation.HotelDAOImpl;
-import Entities.DAO_Implementation.ReviewDAOImpl;
 import Entities.DAO_Implementation.ReviewViewDAOImpl;
-import Entities.Services.HotelService;
-import Entities.Services.ReviewService;
 import Entities.Services.ReviewViewService;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.security.AnyTypePermission;
@@ -116,8 +110,8 @@ public class ProfileController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("AddReview.fxml"));
         Parent root = loader.load();
 
-        AddDataController addDataController = loader.getController();
-        addDataController.setMainWindowController(this);
+        AddReviewController addReviewController = loader.getController();
+        addReviewController.setProfileWindowController(this);
 
         Stage stage = new Stage();
         stage.setTitle("Додати запис");

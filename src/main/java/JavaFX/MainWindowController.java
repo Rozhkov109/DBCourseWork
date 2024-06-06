@@ -2,10 +2,8 @@ package JavaFX;
 
 import Entities.Classes.RoomsView;
 import Entities.DAO_Implementation.OrderAndReservationDAOImpl;
-import Entities.DAO_Implementation.RoomDAOImpl;
 import Entities.DAO_Implementation.RoomsViewDAOImpl;
 import Entities.Services.OrderAndReservationService;
-import Entities.Services.RoomService;
 import Entities.Services.RoomsViewService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -100,6 +98,20 @@ public class MainWindowController {
         stage.show();
     }
 
-    public void createReservation(ActionEvent actionEvent) {
+    public void createReservation(ActionEvent actionEvent) throws IOException {
+       RoomsView roomsView = roomsViewTable.getSelectionModel().getSelectedItem();
+       if (roomsView != null) {
+           FXMLLoader loader = new FXMLLoader(getClass().getResource("AddReservation.fxml"));
+           Parent root = loader.load();
+
+           AddReservationController addReservationController = loader.getController();
+           addReservationController.setMainWindowController(this);
+           addReservationController.setView(roomsView);
+
+           Stage stage = new Stage();
+           stage.setTitle("Додати бронювання");
+           stage.setScene(new Scene(root));
+           stage.show();
+       }
     }
 }

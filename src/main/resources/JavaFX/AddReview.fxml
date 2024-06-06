@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="325.0" prefWidth="476.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.AddDataController">
+<AnchorPane prefHeight="325.0" prefWidth="476.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFX.AddReviewController">
    <children>
       <Text layoutX="140.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Додавання відгуку">
          <font>
