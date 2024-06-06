@@ -53,6 +53,6 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="444.0" layoutY="273.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="114.0" text="Додати відгук" />
+      <Button layoutX="444.0" layoutY="273.0" mnemonicParsing="false" onAction="#addReview" prefHeight="38.0" prefWidth="114.0" text="Додати відгук" />
    </children>
 </AnchorPane>

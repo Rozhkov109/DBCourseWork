@@ -15,4 +15,8 @@ public class HotelService {
    public List<Hotel> getAllHotels() {
         return hotelDAO.getAllHotels();
    }
+
+    public int getHotelIdByName(String hotelName) {
+        return hotelDAO.getHotelIdByName(hotelName);
+    }
 }

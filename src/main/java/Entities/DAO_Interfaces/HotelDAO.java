@@ -5,4 +5,5 @@ import java.util.List;
 
 public interface HotelDAO {
     List<Hotel> getAllHotels();
+    int getHotelIdByName(String hotelName);
 }

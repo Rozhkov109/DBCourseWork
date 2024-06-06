@@ -57,6 +57,10 @@ public class ProfileController {
     private TableColumn<ReviewView, String> reviewTextColumn;
 
 
+    public Guest getGuest() {
+        return guest;
+    }
+
     @FXML
     private void initialize() {
         setUserData();
@@ -64,7 +68,7 @@ public class ProfileController {
         setReservations();
     }
 
-    private void setUserData() {
+    public void setUserData() {
         try{
             Path filePath = Paths.get("src/main/java/Data/XML/GuestData.xml");
 
@@ -82,7 +86,7 @@ public class ProfileController {
         }
     }
 
-    private void setReviews() {
+    public void setReviews() {
         ReviewViewService reviewViewService = new ReviewViewService(new ReviewViewDAOImpl());
         reviewList = FXCollections.observableList(reviewViewService.getReviewViewByGuestId(guest.getId()));
 
@@ -94,7 +98,7 @@ public class ProfileController {
         reviewTable.setItems(reviewList);
     }
 
-    private void setReservations() {
+    public void setReservations() {
 
     }
 
@@ -108,4 +112,16 @@ public class ProfileController {
         stage.show();
     }
 
+    public void addReview(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddReview.fxml"));
+        Parent root = loader.load();
+
+        AddDataController addDataController = loader.getController();
+        addDataController.setMainWindowController(this);
+
+        Stage stage = new Stage();
+        stage.setTitle("Додати запис");
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
 }

@@ -7,6 +7,7 @@ import Entities.DAO_Interfaces.HotelDAO;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class HotelDAOImpl implements HotelDAO {
 
@@ -36,6 +37,7 @@ public class HotelDAOImpl implements HotelDAO {
 
             while (setOfHotels.next()) {
                 hotelList.add(new Hotel(
+                        setOfHotels.getInt("Hotel_id"),
                         setOfHotels.getString("Name"),
                         setOfHotels.getInt("Stars"),
                         setOfHotels.getDouble("Rating"),
@@ -48,5 +50,16 @@ public class HotelDAOImpl implements HotelDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public int getHotelIdByName(String hotelName) {
+        List<Hotel> hotelList = getAllHotels();
+        for (Hotel hotel : hotelList) {
+            if (hotel.getName().equals(hotelName)) {
+                return hotel.getId();
+            }
+        }
+        return -1;
     }
 }
