@@ -1,6 +1,5 @@
 package Entities.DAO_Implementation;
 
-import Entities.Classes.Guest;
 import Entities.Classes.Review;
 import Entities.DAO_Interfaces.ReviewDAO;
 
@@ -13,7 +12,7 @@ public class ReviewDAOImpl implements ReviewDAO {
     private Connection connection;
 
     private final String ADD_REVIEW = "{call review_add(?, ?, ?, ?)}";
-    private static final String SELECT_ALL_REVIEWS = "SELECT * FROM hotelreservations.review";
+    private static final String SELECT_ALL_REVIEWS_BY_GUEST_ID = "SELECT * FROM hotelreservations.review WHERE Guest_id = ?";
     private final String DELETE_REVIEW = "DELETE FROM hotelreservations.review WHERE Review_id = ?";
 
 
@@ -48,8 +47,10 @@ public class ReviewDAOImpl implements ReviewDAO {
         try {
             List<Review> reviewList = new ArrayList<>();
 
-            Statement statement = connection.createStatement();
-            ResultSet setOfReviews = statement.executeQuery(SELECT_ALL_REVIEWS);
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_REVIEWS_BY_GUEST_ID);
+            preparedStatement.setInt(1, guestId);
+
+            ResultSet setOfReviews = preparedStatement.executeQuery();
 
             while (setOfReviews.next()) {
                 reviewList.add(new Review(

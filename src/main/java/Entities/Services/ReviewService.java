@@ -12,13 +12,13 @@ public class ReviewService {
         this.reviewDAO = reviewDAO;
     }
 
-    void addReview(Review review) {
+    public void addReview(Review review) {
         reviewDAO.addReview(review);
     }
-    List<Review> getAllReviewsByGuestId(int guestId) {
+    public List<Review> getAllReviewsByGuestId(int guestId) {
         return reviewDAO.getAllReviewsByGuestId(guestId);
     }
-    void deleteReviewByGuestId(int reviewId) {
+    public void deleteReviewByGuestId(int reviewId) {
         reviewDAO.deleteReviewByGuestId(reviewId);
     }
 }
