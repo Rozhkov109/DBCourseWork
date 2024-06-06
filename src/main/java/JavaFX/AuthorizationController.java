@@ -3,6 +3,9 @@ package JavaFX;
 import Entities.Classes.Guest;
 import Entities.DAO_Implementation.GuestDAOImpl;
 import Entities.Services.GuestService;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
+import com.thoughtworks.xstream.security.AnyTypePermission;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +18,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.LocalDate;
 
 public class AuthorizationController {
@@ -79,6 +84,20 @@ public class AuthorizationController {
         stage.show();
     }
 
+    void writeGuestToXML(Guest guest) {
+        try {
+            XStream xStream = new XStream();
+            xStream.addPermission(AnyTypePermission.ANY);
+
+            xStream.alias("Guest", Guest.class);
+
+            Files.write(Path.of("src/main/java/Data/XML/GuestData.xml"), xStream.toXML(guest).getBytes());
+        }
+        catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @FXML
     void registerGuest(ActionEvent event) throws IOException {
         String name = nameField.getText();
@@ -97,8 +116,6 @@ public class AuthorizationController {
         }
     }
 
-
-
     @FXML
     void loginGuest(ActionEvent event) throws IOException {
         String email = emailLoginField.getText();
@@ -106,7 +123,12 @@ public class AuthorizationController {
         if (email != null && password != null) {
             GuestService guestService = new GuestService(new GuestDAOImpl());
             // Перехід на основну сторінку
-            goToMainPage(guestService.login(email,password),event);
+            Guest guest = guestService.login(email,password);
+            if (guest != null) {
+                writeGuestToXML(guest);
+                goToMainPage(guest,event);
+            }
+            else { passwordLoginField.setText("Помилка! Невірні дані"); }
         }
     }
 }
