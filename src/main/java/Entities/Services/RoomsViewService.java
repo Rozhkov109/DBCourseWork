@@ -15,4 +15,8 @@ public class RoomsViewService {
     public List<RoomsView> getRoomsView() {
         return roomsViewDAO.getRoomsView();
     }
+
+    public void updateRoomsView() {
+        roomsViewDAO.updateRoomsView();
+    }
 }

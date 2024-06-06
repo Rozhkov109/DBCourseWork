@@ -1,8 +1,10 @@
 package Entities.Services;
 
+import Entities.Classes.Reservation;
 import Entities.DAO_Interfaces.OrderAndReservationDAO;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class OrderAndReservationService {
 
@@ -12,11 +14,19 @@ public class OrderAndReservationService {
         this.orderAndReservationDAO = orderAndReservationDAO;
     }
 
-    void addOrderWithReservation(int guestId, int roomId, LocalDateTime startDate, LocalDateTime endDate, String comment) {
+    public void addOrderWithReservation(int guestId, int roomId, LocalDateTime startDate, LocalDateTime endDate, String comment) {
         orderAndReservationDAO.addOrderWithReservation(guestId,roomId,startDate,endDate,comment);
     }
 
-    void deleteOrderWithReservation(int orderId) {
+    public void deleteOrderWithReservation(int orderId) {
         orderAndReservationDAO.deleteOrderWithReservation(orderId);
+    }
+
+    public List<Reservation> getAllReservations() {
+        return orderAndReservationDAO.getAllReservations();
+    }
+
+    public void updateReservationsAndRoomsData() {
+        orderAndReservationDAO.updateReservationsData();
     }
 }

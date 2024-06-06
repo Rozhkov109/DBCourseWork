@@ -1,7 +1,11 @@
 package JavaFX;
 
 import Entities.Classes.RoomsView;
+import Entities.DAO_Implementation.OrderAndReservationDAOImpl;
+import Entities.DAO_Implementation.RoomDAOImpl;
 import Entities.DAO_Implementation.RoomsViewDAOImpl;
+import Entities.Services.OrderAndReservationService;
+import Entities.Services.RoomService;
 import Entities.Services.RoomsViewService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -59,7 +63,15 @@ public class MainWindowController {
 
     @FXML
     private void initialize() {
+        updateDataInRoomsView();
         updateTable();
+    }
+
+    private void updateDataInRoomsView() {
+        OrderAndReservationService orderAndReservationService = new OrderAndReservationService(new OrderAndReservationDAOImpl());
+        orderAndReservationService.updateReservationsAndRoomsData();
+        RoomsViewService roomsViewService = new RoomsViewService(new RoomsViewDAOImpl());
+        roomsViewService.updateRoomsView();
     }
 
     private void updateTable() {

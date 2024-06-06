@@ -15,4 +15,8 @@ public class RoomService {
     List<Room> getAllRoomsById(int hotelId) {
         return roomDAO.getAllRoomsById(hotelId);
     }
+
+    List<Room> getAllRooms() {
+        return roomDAO.getAllRooms();
+    }
 }

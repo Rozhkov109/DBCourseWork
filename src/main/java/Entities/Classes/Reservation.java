@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 public class Reservation {
     public enum ReservationStatus {
         ACTIVE("Active"),
-        CANCELED("Completed");
+        COMPLETED("Completed");
 
         private String status;
 
@@ -22,6 +22,9 @@ public class Reservation {
             this.status = status;
         }
 
+        public String getStatus() {
+            return status;
+        }
     }
 
     private int id = -1;
