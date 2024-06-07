@@ -107,6 +107,7 @@ public class ProfileController {
 
     public void setUserData() {
         personalDataTextArea.setText("Ім'я: " + guest.getFirstName() + "\nПрізвище: " + guest.getSecondName() + "\nДата народження: " +
+                guest.getBirthDate() + "\nНомер телефону: " +
                 guest.getPhoneNumber() + "\nЕлектронна пошта: " + guest.getEmail());
 
     }
