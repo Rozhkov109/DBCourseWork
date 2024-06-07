@@ -34,13 +34,13 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <TableView layoutX="109.0" layoutY="348.0" prefHeight="200.0" prefWidth="486.0">
+      <TableView fx:id="reservationTableView" layoutX="109.0" layoutY="348.0" prefHeight="200.0" prefWidth="486.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Готель" />
-          <TableColumn prefWidth="96.79998016357422" text="Місто" />
-            <TableColumn prefWidth="119.199951171875" text="Початок" />
-            <TableColumn prefWidth="117.60003662109375" text="Кінець" />
-            <TableColumn prefWidth="76.0000061035156" text="Ціна" />
+          <TableColumn fx:id="hotelResColumn" prefWidth="75.0" text="Готель" />
+          <TableColumn fx:id="cityResColumn" prefWidth="96.79998016357422" text="Місто" />
+            <TableColumn fx:id="startDateResColumn" prefWidth="119.199951171875" text="Початок" />
+            <TableColumn fx:id="endDateResColumn" prefWidth="117.60003662109375" text="Кінець" />
+            <TableColumn fx:id="priceResColumn" prefWidth="76.0000061035156" text="Ціна" />
         </columns>
       </TableView>
       <Text layoutX="269.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Історія бронювань">

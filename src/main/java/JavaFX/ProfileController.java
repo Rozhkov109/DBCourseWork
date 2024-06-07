@@ -1,8 +1,11 @@
 package JavaFX;
 
 import Entities.Classes.Guest;
+import Entities.Classes.ReservationView;
 import Entities.Classes.ReviewView;
+import Entities.DAO_Implementation.ReservationViewImpl;
 import Entities.DAO_Implementation.ReviewViewDAOImpl;
+import Entities.Services.ReservationViewService;
 import Entities.Services.ReviewViewService;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.security.AnyTypePermission;
@@ -51,18 +54,28 @@ public class ProfileController {
     private TableColumn<ReviewView, String> reviewTextColumn;
 
 
-    public Guest getGuest() {
-        return guest;
-    }
+    private ObservableList<ReservationView> reservationList;
 
     @FXML
-    private void initialize() {
-        setUserData();
-        setReviews();
-        setReservations();
-    }
+    private TableView<ReservationView> reservationTableView;
 
-    public void setUserData() {
+    @FXML
+    private TableColumn<ReservationView,String> hotelResColumn;
+
+    @FXML
+    private TableColumn<ReservationView,String> cityResColumn;
+
+    @FXML
+    private TableColumn<ReservationView,LocalDateTime> startDateResColumn;
+
+    @FXML
+    private TableColumn<ReservationView,LocalDateTime> endDateResColumn;
+
+    @FXML
+    private TableColumn<ReservationView,Double> priceResColumn;
+
+
+    public void setGuest() {
         try{
             Path filePath = Paths.get("src/main/java/Data/XML/GuestData.xml");
 
@@ -73,11 +86,29 @@ public class ProfileController {
 
             guest = (Guest) xStream.fromXML(new String(Files.readAllBytes(filePath)));
 
-            personalDataTextArea.setText("Ім'я: " + guest.getFirstName() + "\nПрізвище: " + guest.getSecondName() + "\nДата народження: " +
-                    guest.getPhoneNumber() + "\nЕлектронна пошта: " + guest.getEmail());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public Guest getGuest() {
+        return guest;
+    }
+
+    @FXML
+    private void initialize() {
+        setGuest();
+        setUserData();
+        setReviews();
+        setReservations();
+    }
+
+
+
+    public void setUserData() {
+        personalDataTextArea.setText("Ім'я: " + guest.getFirstName() + "\nПрізвище: " + guest.getSecondName() + "\nДата народження: " +
+                guest.getPhoneNumber() + "\nЕлектронна пошта: " + guest.getEmail());
+
     }
 
     public void setReviews() {
@@ -93,7 +124,16 @@ public class ProfileController {
     }
 
     public void setReservations() {
+        ReservationViewService reservationViewService = new ReservationViewService(new ReservationViewImpl());
+        reservationList = FXCollections.observableList(reservationViewService.getReservationView(guest.getId()));
 
+        hotelResColumn.setCellValueFactory(new PropertyValueFactory<>("hotelName"));
+        cityResColumn.setCellValueFactory(new PropertyValueFactory<>("city"));
+        startDateResColumn.setCellValueFactory(new PropertyValueFactory<>("startDate"));
+        endDateResColumn.setCellValueFactory(new PropertyValueFactory<>("endDate"));
+        priceResColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        reservationTableView.setItems(reservationList);
     }
 
     public void goToMainWindow(ActionEvent event) throws IOException {

@@ -5,5 +5,5 @@ import Entities.Classes.ReservationView;
 import java.util.List;
 
 public interface ReservationViewDAO {
-    List<ReservationView> getReservationView();
+    List<ReservationView> getReservationView(int guestId);
 }

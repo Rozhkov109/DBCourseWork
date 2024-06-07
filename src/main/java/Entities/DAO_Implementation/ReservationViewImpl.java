@@ -12,7 +12,7 @@ public class ReservationViewImpl implements ReservationViewDAO {
 
     private Connection connection;
 
-    private static final String SELECT_ALL_FROM_RESERVATION_VIEW = "SELECT * FROM hotelreservations.guest_all_reservations";
+    private static final String SELECT_ALL_FROM_RESERVATION_VIEW_BY_GUEST_ID = "SELECT * FROM hotelreservations.guest_all_reservations WHERE Guest_id = ?";
 
     public ReservationViewImpl() {
         try {
@@ -26,12 +26,14 @@ public class ReservationViewImpl implements ReservationViewDAO {
     }
 
     @Override
-    public List<ReservationView> getReservationView() {
+    public List<ReservationView> getReservationView(int guestId) {
         try {
             List<ReservationView> reservationViewList = new ArrayList<>();
 
-            Statement statement = connection.createStatement();
-            ResultSet setOfReservationView = statement.executeQuery(SELECT_ALL_FROM_RESERVATION_VIEW);
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_FROM_RESERVATION_VIEW_BY_GUEST_ID);
+            preparedStatement.setInt(1, guestId);
+
+            ResultSet setOfReservationView = preparedStatement.executeQuery();
 
             while (setOfReservationView.next()) {
                 reservationViewList.add(new ReservationView(

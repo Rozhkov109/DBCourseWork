@@ -12,7 +12,7 @@ public class ReservationViewService {
         this.reservationViewDAO = reservationViewDAO;
     }
 
-    public List<ReservationView> getReservationView() {
-        return reservationViewDAO.getReservationView();
+    public List<ReservationView> getReservationView(int guestId) {
+        return reservationViewDAO.getReservationView(guestId);
     }
 }
